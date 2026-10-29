@@ -4,9 +4,9 @@
 
 ## 영상
 
-| 폴더 | 내용 | 길이 |
-|---|---|---|
-| [`ai-week-1029/`](ai-week-1029/) | AI 위클리 · 10월 마지막 주 (Broadcast News Package 스타일) | 68초 |
+| 폴더 | 내용 | 길이 | 유튜브 |
+|---|---|---|---|
+| [`ai-week-1029/`](ai-week-1029/) | AI 위클리 · 10월 마지막 주 (Broadcast News Package 스타일) | 68초 | [보기](https://youtu.be/V8rwZ4BBMQk) |
 
 ## 시작하기
 
