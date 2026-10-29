@@ -186,6 +186,11 @@ for e in EV:
     X.add(vo, x.astype(np.float32), e['t'], 1.0, 0)
     spans.append((e['t'], e['t'] + len(x) / SR))
 
+os.makedirs(os.path.join(HERE, 'out'), exist_ok=True)
+json.dump([[round(a, 3), round(b, 3)] for a, b in spans], open(os.path.join(HERE, 'out', 'vo_spans.json'), 'w'))
+# the music before ducking, for a DAW session that ducks it with volume automation instead (out/vo_spans.json gives the speech spans)
+dry = (music * .9 * np.clip((DUR - tt) / 1.0, 0, 1)[:, None])[:int(DUR * SR)]
+wavfile.write(os.path.join(HERE, 'out', 'stem_music_dry.wav'), SR, (np.clip(dry, -1, 1) * 32767).astype(np.int16))
 duck = np.ones(N, np.float32)
 for a, b in spans:
     k = np.clip(np.minimum((tt - (a - .08)) / .08, ((b + .15) - tt) / .15), 0, 1)
