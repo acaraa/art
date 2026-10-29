@@ -1,0 +1,6 @@
+# AI 위클리 → FilmCraft timeline: picture on V1, voice / music / effects stems on A1–A3, subtitles as a caption track
+{"id":"timeline.place","params":{"item":7,"track":"V1","seconds":0,"audio":false}}
+{"id":"timeline.place","params":{"item":8,"track":"A1","seconds":0}}
+{"id":"timeline.place","params":{"item":9,"track":"A2","seconds":0}}
+{"id":"timeline.place","params":{"item":10,"track":"A3","seconds":0}}
+{"id":"captions.import","params":{"path":"../ai-week-1029.srt","name":"한국어 자막"}}
