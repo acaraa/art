@@ -15,6 +15,7 @@
 
 | 레이어 | 움직임 |
 |---|---|
+| Handle | 제작자 핸들 `@noah.aiart`. 로고 아래에 1.45~1.70초에 나타남 |
 | Bug Caption | "WEEKLY" 글자. 로고판이 오른쪽 위에 내려앉을 때(1.38~1.50초) 나타남 |
 | Glint, Plate (glint matte) | 로고판 위를 지나가는 흰 빛줄기(0.85~1.12초). 로고판 모양 매트로 잘림 |
 | Plate Letters | "AI·W". 로고판의 자식 레이어로, 0.30~0.70초에 내려앉음 |
@@ -26,7 +27,7 @@
 
 ## 바꾸는 방법
 
-- **채널 이름이나 날짜:** 텍스트 레이어(`Plate Letters`, `Wordmark …`, `Dateline`)를 고치면 됩니다. 스크립트를 다시 돌릴 때는 `sting.jsx` 맨 위의 값을 고칩니다.
+- **채널 이름, 날짜, 핸들:** 텍스트 레이어(`Plate Letters`, `Wordmark …`, `Dateline`, `Handle`)를 고치면 됩니다. 스크립트를 다시 돌릴 때는 `sting.jsx` 맨 위의 값을 고칩니다.
 - **색:** `sting.jsx`의 `LEMON`, `GOLD`, `INK` 값을 바꾸고 다시 실행합니다.
 
 ## 다시 만들기

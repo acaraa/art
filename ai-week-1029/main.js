@@ -3,6 +3,7 @@
 // No burned-in subtitles, no crawl: the strap stays from the first story to the recap; subtitles ship as a sidecar .srt (CUES → tools/subs.py).
 // Package-part techniques (strap, split-flap, band wipe, plate) follow the library's news-package demo; story, shots and timings are this film's own.
 const W = 1920, H = 1080, DUR = 68.0;
+const HANDLE = '@noah.aiart';   // the maker's handle: under the bug, in the strap's end block, on the end card
 const cv = document.getElementById('out'); let ctx = cv.getContext('2d');
 
 const C = {
@@ -150,7 +151,8 @@ function strap(t) {
   ctx.fillStyle = C.paper; ctx.fillRect(x0, by, bw, bh);
   ctx.fillStyle = C.lemon; ctx.fillRect(x0, by, 14, bh);
   ctx.fillStyle = C.ink; ctx.fillRect(x0 + bw, by, 120, bh); ctx.fillStyle = C.lemon; ctx.fillRect(x0 + bw, by, 120, 6);
-  text('AI·W', x0 + bw + 60, by + 68, F.b8(40), C.lemon, 'center', 1);
+  text('AI·W', x0 + bw + 60, by + 56, F.b8(34), C.lemon, 'center', 1);
+  text(HANDLE, x0 + bw + 60, by + 86, F.mono(13), C.paper, 'center', .5);
   ctx.save(); ctx.beginPath(); ctx.rect(x0 + 14, by, bw - 14, bh); ctx.clip();
   text(S.kr, x0 + 44, by + 58, fit(S.kr, F.kr9, 50, bw - 80), C.ink, 'left', 0, 'strap'); text(S.en, x0 + 46, by + 92, F.b6(27), C.olive, 'left', 1.5, 'strape');
   ctx.restore();
@@ -177,7 +179,8 @@ function cornerTag(t) {
 function bug(t) {
   if (t < 5.45 || t > 61.4) return;
   ctx.globalAlpha = .95; plate(1739, 86, .327, -1, 1);
-  text('WEEKLY', 1650, 96, F.b8(26), C.white, 'right', 3); ctx.globalAlpha = 1;
+  text('WEEKLY', 1650, 96, F.b8(26), C.white, 'right', 3);
+  ctx.globalAlpha = .8 * seg(t, 5.45, 5.7); text(HANDLE, 1836, 148, F.mono(18), C.paper, 'right', 1.5, 'handle'); ctx.globalAlpha = 1;
 }
 const SOURCES = [
   [0, 4.0, 'SOURCE: OPENAI API PRICING', '출처: OpenAI 가격표 · 이전 가격은 −50%에서 역산'],
@@ -657,6 +660,7 @@ function shotEnd(t) {
   r(440, 80, m(T + .2, T + .5), () => text('The Week in AI', x, 440, F.b6i(76), C.lemon, 'left', 2, 'e2'));
   const lk = eio(seg(t, T + .35, T + .65)); ctx.fillStyle = C.lemon; ctx.fillRect(x, 482, 880 * lk, 2);
   ctx.globalAlpha = m(T + .5, T + .75); text('10월 마지막 주 · 네 가지 소식', x, 548, F.kr7(32), C.white, 'left', 0, 'e3'); ctx.globalAlpha = 1;
+  ctx.globalAlpha = m(T + .65, T + .9); const hw = text('제작', x, 616, F.kr7(32), C.grey, 'left', 0, 'e4k'); text(HANDLE, x + hw + 18, 618, F.b8(44), C.lemon, 'left', 1, 'e4'); ctx.globalAlpha = 1;
   ctx.globalAlpha = m(T + .7, T + 1.0);
   ctx.fillStyle = C.line; ctx.fillRect(x, 800, 1620, 1);
   [['출처: OpenAI · Anthropic · Oracle · NVIDIA · Google DeepMind', 'e5'],

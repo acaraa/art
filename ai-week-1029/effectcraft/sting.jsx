@@ -144,8 +144,12 @@ try { glint.trackMatteType = TrackMatteType.ALPHA; } catch (e) {}
 // the bug's caption appears once the plate lands
 var cap = text("Bug Caption", "WEEKLY", 26, WHITE, FONT_BOLD, [1650, 96], ParagraphJustification.RIGHT_JUSTIFY);
 keys(tr(cap, "ADBE Opacity"), [[1.38, 0], [1.50, 95]]);
+// the maker's handle under the bug, as in the film
+var handle = text("Handle", "@noah.aiart", 18, [244, 241, 232], FONT_MONO, [1836, 148], ParagraphJustification.RIGHT_JUSTIFY);
+keys(tr(handle, "ADBE Opacity"), [[1.45, 0], [1.70, 80]]);
 
-// order, top to bottom: caption, glint, its matte, letters, plate, wordmark, dateline, ring, slashes, fins, background
+handle.moveToBeginning();
+// order, top to bottom: handle, caption, glint, its matte, letters, plate, wordmark, dateline, ring, slashes, fins, background
 cap.moveToBeginning();
 writeLn("built " + comp.name + ": " + comp.numLayers + " layers, " + comp.duration + " s at " + comp.frameRate + " fps");
 comp.name;
