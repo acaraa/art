@@ -195,11 +195,16 @@ cut = 1 - duck   # under speech the music also loses part of the 1.2–5 kHz ban
 band = np.stack([X.bp(music[:, c], 1200, 5000) for c in range(2)], 1).astype(np.float32)
 music -= band * (cut / .55 * .6)[:, None]
 
+fade = np.clip((DUR - tt) / 1.0, 0, 1)
+os.makedirs(os.path.join(HERE, 'out'), exist_ok=True)
+# stems at their mix levels (music already ducked), for re-editing in an NLE: voice · music · sound effects + ambience
+for name, s in (('vo', vo * 1.3), ('music', music * .9), ('sfx', fx * .8 + amb * .8)):
+    s = (s * fade[:, None])[:int(DUR * SR)]
+    wavfile.write(os.path.join(HERE, 'out', f'stem_{name}.wav'), SR, (np.clip(s, -1, 1) * 32767).astype(np.int16))
 mix = music * .9 + fx * .8 + amb * .8 + vo * 1.3
-fade = np.clip((DUR - tt) / 1.0, 0, 1); mix *= fade[:, None]
+mix *= fade[:, None]
 mix = mix[:int(DUR * SR)]
 mix = np.stack([X.limit(mix[:, 0], .95), X.limit(mix[:, 1], .95)], 1)
-os.makedirs(os.path.join(HERE, 'out'), exist_ok=True)
 wavfile.write(os.path.join(HERE, 'out', 'mix.wav'), SR, (mix * 32767).astype(np.int16))
 print('mix', mix.shape, 'peak', float(np.abs(mix).max()))
 print('\n'.join(S.credits(sorted({e['inst'] for e in M}))))
