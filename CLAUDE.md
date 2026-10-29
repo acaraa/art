@@ -26,6 +26,11 @@
 | deckcraft-cli | 발표 자료 |
 | Typecast (`api.typecast.ai`, 세션에 연결됨) | 한국어 내레이션. 기본 음성 "Jinhee"(아나운서). 계정에 커스텀 음성 "편해윤"이 있음 |
 
+## 스킬
+| 스킬 | 쓰는 때 |
+|---|---|
+| [`ai-weekly-news`](.claude/skills/ai-weekly-news/SKILL.md) | 주간 AI 뉴스("AI 위클리")나 다른 방송 뉴스 형식 영상. 이전 회차 폴더를 틀로 복사해서 만든다 |
+
 ## 영상 폴더 규칙
 - 폴더 이름: `<주제>-<MMDD>`처럼 소문자, 숫자, 하이픈만 씁니다(예: `ai-week-1029`).
 - 꼭 들어갈 것: 완성 영상(`.mp4`), `poster.jpg`, 내레이션이 있으면 `.srt`, `TREATMENT.md`, `CREDITS`, 다시 만드는 `build.sh`, 사실을 다루면 `FACTS.md`.
