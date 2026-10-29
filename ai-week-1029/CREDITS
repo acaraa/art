@@ -1,0 +1,32 @@
+AI 위클리 · 10월 마지막 주 (2026-10-26 ~ 10-29) — CREDITS
+
+Style
+  Broadcast News Package style from the lemo-opuscar film-style library
+  (github.com/lemomo-ai/lemo-opuscar, MIT for code · CC BY 4.0 for style docs). Package-part code techniques adapted from its demo.
+
+Facts and sources (see FACTS.md for every claim, URL and quoted wording)
+  OpenAI — "Introducing GPT-6.1 Terra", API pricing docs (26 Oct 2026)
+  Anthropic — "Anthropic files S-1 with the SEC for proposed initial public offering" (26 Oct 2026)
+  Oracle / NVIDIA — "NVIDIA and Oracle Expand NVIDIA Vera Rubin to Multi-Gigawatt Scale…" (27 Oct 2026); Oracle AI infrastructure page
+  Google DeepMind — "Genie 4: A new generation of world simulation" (27 Oct 2026)
+  This is an independent round-up made from public information; none of these companies made or endorsed it.
+  Company names are set in type; no logos are used.
+
+Voice
+  Typecast text-to-speech (typecast.ai), voice "Jinhee" (ssfm-v30), generated with the account connected to this session.
+  Check Typecast's terms for your plan before publishing commercially.
+
+Music samples (CC0)
+  VS Chamber Orchestra: Community Edition (Versilian Studios) — CC0
+  Versilian Community Sample Library (Versilian Studios) — CC0
+  Foley synthesised in code (lemo-opuscar core/audio/sfx.py).
+
+Fonts (SIL Open Font License 1.1, subsets from Google Fonts)
+  Noto Sans KR — Google
+  Barlow Condensed — Jeremy Tribby
+  IBM Plex Mono — IBM
+
+Pictures
+  All graphics are drawn in code. The desktop window (story 1) and the wireframe terrain (story 4) are illustrations
+  tagged ILLUSTRATION on screen; the GPU grid (story 3) is a schematic tagged SCHEMATIC (1 cell = 1,000 GPUs).
+  No photographs, footage or AI-generated images are used.
