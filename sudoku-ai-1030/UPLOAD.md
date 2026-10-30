@@ -34,3 +34,5 @@ AI는 이 스도쿠를 몇 초 만에 풀까? #shorts
 
 #스도쿠 #알고리즘 #백트래킹 #코딩 #AI
 ```
+
+**게시됨:** https://youtube.com/shorts/qorHzcS22dI (2026-10-30, 쇼츠)
