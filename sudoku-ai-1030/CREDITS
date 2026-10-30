@@ -1,0 +1,29 @@
+AI는 스도쿠를 몇 초 만에 풀까 (2026-10-30) — CREDITS
+
+Style
+  ASCII / CRT Terminal style from the lemo-opuscar film-style library
+  (github.com/lemomo-ai/lemo-opuscar, MIT for code · CC BY 4.0 for style docs).
+  crt.js (monochrome phosphor CRT pass) is copied from the style's demo under the MIT licence; the glyph engine
+  (term.js), timeline, score and foley were written for this film.
+
+Puzzle and numbers
+  The puzzle was generated for this film (tools/pick.js) and has exactly one solution.
+  Solve time, tries and step-backs were measured with solver.js on this machine (see FACTS.md).
+
+Voice
+  Typecast text-to-speech (typecast.ai), voice "Jinhee" (ssfm-v30), generated with the account connected to this session.
+  Check Typecast's terms for your plan before publishing commercially.
+
+Music and sound
+  Original analogue-synth score synthesised in code (score.py: PolyBLEP oscillators, ladder filter, reverb).
+  All foley synthesised in code (mix.py; compressor and limiter from lemo-opuscar core/audio/sfx.py).
+  No samples or recordings are used.
+
+Fonts (SIL Open Font License 1.1, subsets from Google Fonts)
+  VT323 — Peter Hull
+  Nanum Gothic Coding — Sandoll Communications / NAVER
+
+Pictures
+  Everything on screen is text drawn on a character grid in code. No images, logos or footage.
+
+Made by @noah.aiart

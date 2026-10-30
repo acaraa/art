@@ -7,6 +7,7 @@
 | 폴더 | 내용 | 길이 | 유튜브 |
 |---|---|---|---|
 | [`ai-week-1029/`](ai-week-1029/) | AI 위클리 · 10월 마지막 주 (Broadcast News Package 스타일) | 68초 | [보기](https://youtu.be/V8rwZ4BBMQk) |
+| [`sudoku-ai-1030/`](sudoku-ai-1030/) | AI는 스도쿠를 몇 초 만에 풀까 (ASCII / CRT Terminal 스타일, 세로 쇼츠) | 39초 | 아직 올리지 않음 |
 
 ## 시작하기
 
