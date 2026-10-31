@@ -1,0 +1,5 @@
+blender/render/
+blender/*.blend
+blender/*.blend1
+out/
+stills/
