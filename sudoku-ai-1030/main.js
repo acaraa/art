@@ -305,8 +305,27 @@ function film(t) {
   for (const tc of [T.clear1, T.clear2]) if (t >= tc && t < tc + .5) { const k = decay(t, tc); g.globalAlpha = 1; g.fillStyle = `rgba(255,0,0,${.06 * k})`; g.fillRect(0, 120, W, 1180); }
 }
 
-const CHARSET = [CMD, Q1, A1, Q2, BRAND, LBL_T, LBL_B, CODECMD, NOTE, STATUS_L, STATUS_M, STATUS_R, SEP, '0123456789.|-> ,', '|/-\\', '계산 중', ' LOG ', `-- ${CODE.length} lines --`, ...CODE, ...LINES.map(L => L.text)].join('');
+// ===================== Thumbnail (?frame=thumb): the question, an unsolved board mid-try, and the hook line =====================
+const TH1 = 'AI는', TH2 = '몇 초?', TH3 = '200만 번 틀려 보고 찾은 답은?';
+function thumb() {
+  g.globalCompositeOperation = 'source-over'; g.globalAlpha = 1; g.fillStyle = '#000'; g.fillRect(0, 0, W, H);
+  g.globalCompositeOperation = 'lighter';
+  status();
+  text(g, TH1, 0, 0, head(TH1, 120, 150), 1.25);
+  text(g, TH2, 0, 0, head(TH2, 120, 420), 1.25);
+  const v = { ox: F.x - 12.5 * 34, oy: 760, cw: 34 };
+  board(v, i => {
+    if (i === 2) return { layers: [{ ch: '3', a: 1, inv: true }] };          // trying 3 in the third cell…
+    if (i === 20) return { layers: [{ ch: '3', a: 1, inv: true }] };         // …which breaks the box rule with this 3
+    if (i === 0) return { ch: '1', a: .62 };
+    return givenOrDot(i);
+  });
+  text(g, TH3, 0, 0, head(TH3, 30, 1700), .95);
+}
+
+const CHARSET = [TH1, TH2, TH3, CMD, Q1, A1, Q2, BRAND, LBL_T, LBL_B, CODECMD, NOTE, STATUS_L, STATUS_M, STATUS_R, SEP, '0123456789.|-> ,', '|/-\\', '계산 중', ' LOG ', `-- ${CODE.length} lines --`, ...CODE, ...LINES.map(L => L.text)].join('');
 await initTerm(CHARSET);
 window.DUR = T.dur; window.EV = EV;
-window.render = t => { film(t); crt.render(scene, Math.round(t * 30), {}); };
+const THUMB = new URLSearchParams(location.search).get('frame') === 'thumb';
+window.render = t => { if (THUMB) thumb(); else film(t); crt.render(scene, Math.round(t * 30), {}); };
 window.READY = true;

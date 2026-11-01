@@ -23,6 +23,7 @@ sh core/render/mux.sh "$HERE/out/video.mp4" "$HERE/out/mix.wav" "$HERE/out/muxed
 # mux.sh's -shortest leaves the padded audio tail on; cut the stream copy at the picture's length
 ffmpeg -v error -y -i "$HERE/out/muxed.mp4" -t 39 -c copy -movflags +faststart "$HERE/sudoku-ai-1030.mp4"
 "$PY" "$HERE/tools/subs.py"
-node core/render/still.mjs "$HERE" 22.4 --size $S --prefix poster_ --out "$HERE/stills" >/dev/null
-cp "$HERE/stills/poster_22.4.jpg" "$HERE/poster.jpg"
+# thumbnail: the question, not the answer (main.js thumb())
+node core/render/still.mjs "$HERE" 0 --size $S --q 'frame=thumb' --prefix thumb_ --out "$HERE/stills" >/dev/null
+cp "$HERE/stills/thumb_0.jpg" "$HERE/poster.jpg"
 echo "done: $HERE/sudoku-ai-1030.mp4"
