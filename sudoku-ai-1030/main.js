@@ -311,8 +311,14 @@ function thumb() {
   g.globalCompositeOperation = 'source-over'; g.globalAlpha = 1; g.fillStyle = '#000'; g.fillRect(0, 0, W, H);
   g.globalCompositeOperation = 'lighter';
   status();
-  text(g, TH1, 0, 0, head(TH1, 120, 140), 1.3);
-  text(g, TH2, 0, 0, head(TH2, 62, 440), 1.05);
+  // large Hangul already carries side bearings inside its two-cell slot, so a full-cell word space reads as a gap: keep only a sliver
+  const tight = (str, cw, y, a, gap = .12) => {
+    const words = str.split(' '), n = words.reduce((k, w) => k + width(w), 0) + gap * (words.length - 1);
+    const v = { ox: Math.round((W - n * cw) / 2), oy: y, cw }; let c = 0;
+    for (const w of words) { text(g, w, c, 0, v, a); c += width(w) + gap; }
+  };
+  tight(TH1, 132, 132, 1.3, -.3);
+  tight(TH2, 70, 430, 1.05, .45);
   const v = { ox: F.x - 12.5 * 34, oy: 760, cw: 34 };
   board(v, i => {
     if (i === 2) return { layers: [{ ch: '3', a: 1, inv: true }] };          // trying 3 in the third cell…
@@ -320,7 +326,7 @@ function thumb() {
     if (i === 0) return { ch: '1', a: .62 };
     return givenOrDot(i);
   });
-  text(g, TH3, 0, 0, head(TH3, 40, 1690), 1.05);
+  tight(TH3, 44, 1686, 1.05, .3);
 }
 
 const CHARSET = [TH1, TH2, TH3, CMD, Q1, A1, Q2, BRAND, LBL_T, LBL_B, CODECMD, NOTE, STATUS_L, STATUS_M, STATUS_R, SEP, '0123456789.|-> ,', '|/-\\', '계산 중', ' LOG ', `-- ${CODE.length} lines --`, ...CODE, ...LINES.map(L => L.text)].join('');
