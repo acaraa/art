@@ -306,13 +306,13 @@ function film(t) {
 }
 
 // ===================== Thumbnail (?frame=thumb): the question, an unsolved board mid-try, and the hook line =====================
-const TH1 = 'AI는', TH2 = '몇 초?', TH3 = '200만 번 틀려 보고 찾은 답은?';
+const TH1 = '200만 번', TH2 = '숫자를 대 봤다', TH3 = 'AI는 몇 초 걸렸을까?';   // 1,988,853 tries (not failures: 221,008 of them fit)
 function thumb() {
   g.globalCompositeOperation = 'source-over'; g.globalAlpha = 1; g.fillStyle = '#000'; g.fillRect(0, 0, W, H);
   g.globalCompositeOperation = 'lighter';
   status();
-  text(g, TH1, 0, 0, head(TH1, 120, 150), 1.25);
-  text(g, TH2, 0, 0, head(TH2, 120, 420), 1.25);
+  text(g, TH1, 0, 0, head(TH1, 120, 140), 1.3);
+  text(g, TH2, 0, 0, head(TH2, 62, 440), 1.05);
   const v = { ox: F.x - 12.5 * 34, oy: 760, cw: 34 };
   board(v, i => {
     if (i === 2) return { layers: [{ ch: '3', a: 1, inv: true }] };          // trying 3 in the third cell…
@@ -320,7 +320,7 @@ function thumb() {
     if (i === 0) return { ch: '1', a: .62 };
     return givenOrDot(i);
   });
-  text(g, TH3, 0, 0, head(TH3, 30, 1700), .95);
+  text(g, TH3, 0, 0, head(TH3, 40, 1690), 1.05);
 }
 
 const CHARSET = [TH1, TH2, TH3, CMD, Q1, A1, Q2, BRAND, LBL_T, LBL_B, CODECMD, NOTE, STATUS_L, STATUS_M, STATUS_R, SEP, '0123456789.|-> ,', '|/-\\', '계산 중', ' LOG ', `-- ${CODE.length} lines --`, ...CODE, ...LINES.map(L => L.text)].join('');
