@@ -306,7 +306,7 @@ function film(t) {
 }
 
 // ===================== Thumbnail (?frame=thumb): the question, an unsolved board mid-try, and the hook line =====================
-const TH1 = '200만 번', TH2 = '숫자를 대 봤다', TH3 = 'AI는 몇 초 걸렸을까?';   // 1,988,853 tries (not failures: 221,008 of them fit)
+const TH1 = '200만 번', TH2 = '돌려봤다', TH3 = 'AI는 몇 초 걸렸을까?';   // 1,988,853 tries (not failures: 221,008 of them fit)
 function thumb() {
   g.globalCompositeOperation = 'source-over'; g.globalAlpha = 1; g.fillStyle = '#000'; g.fillRect(0, 0, W, H);
   g.globalCompositeOperation = 'lighter';
@@ -318,7 +318,7 @@ function thumb() {
     for (const w of words) { text(g, w, c, 0, v, a); c += width(w) + gap; }
   };
   tight(TH1, 132, 132, 1.3, -.3);
-  tight(TH2, 70, 430, 1.05, .45);
+  tight(TH2, 92, 420, 1.15);
   const v = { ox: F.x - 12.5 * 34, oy: 760, cw: 34 };
   board(v, i => {
     if (i === 2) return { layers: [{ ch: '3', a: 1, inv: true }] };          // trying 3 in the third cell…
