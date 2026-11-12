@@ -17,6 +17,7 @@ sh tools/setup.sh      # 도구 설치: lemo-opuscar, Craft 앱 명령줄 도구
 ```
 
 작업 규칙(브랜드, 폴더 구성, 검수 항목)은 [`CLAUDE.md`](CLAUDE.md)에 있습니다.
+지금까지의 작업 기록과 남은 일은 [`WORKLOG.md`](WORKLOG.md)에 있습니다.
 
 ## 사용자 컴퓨터에 설치할 앱
 
