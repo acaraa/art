@@ -305,8 +305,33 @@ function film(t) {
   for (const tc of [T.clear1, T.clear2]) if (t >= tc && t < tc + .5) { const k = decay(t, tc); g.globalAlpha = 1; g.fillStyle = `rgba(255,0,0,${.06 * k})`; g.fillRect(0, 120, W, 1180); }
 }
 
-const CHARSET = [CMD, Q1, A1, Q2, BRAND, LBL_T, LBL_B, CODECMD, NOTE, STATUS_L, STATUS_M, STATUS_R, SEP, '0123456789.|-> ,', '|/-\\', '계산 중', ' LOG ', `-- ${CODE.length} lines --`, ...CODE, ...LINES.map(L => L.text)].join('');
+// ===================== Thumbnail (?frame=thumb): the question, an unsolved board mid-try, and the hook line =====================
+const TH1 = '200만 번', TH2 = '돌려봤다', TH3 = 'AI는 몇 초 걸렸을까?';   // 1,988,853 tries (not failures: 221,008 of them fit)
+function thumb() {
+  g.globalCompositeOperation = 'source-over'; g.globalAlpha = 1; g.fillStyle = '#000'; g.fillRect(0, 0, W, H);
+  g.globalCompositeOperation = 'lighter';
+  status();
+  // large Hangul already carries side bearings inside its two-cell slot, so a full-cell word space reads as a gap: keep only a sliver
+  const tight = (str, cw, y, a, gap = .12) => {
+    const words = str.split(' '), n = words.reduce((k, w) => k + width(w), 0) + gap * (words.length - 1);
+    const v = { ox: Math.round((W - n * cw) / 2), oy: y, cw }; let c = 0;
+    for (const w of words) { text(g, w, c, 0, v, a); c += width(w) + gap; }
+  };
+  tight(TH1, 132, 132, 1.3, -.3);
+  tight(TH2, 92, 420, 1.15);
+  const v = { ox: F.x - 12.5 * 34, oy: 760, cw: 34 };
+  board(v, i => {
+    if (i === 2) return { layers: [{ ch: '3', a: 1, inv: true }] };          // trying 3 in the third cell…
+    if (i === 20) return { layers: [{ ch: '3', a: 1, inv: true }] };         // …which breaks the box rule with this 3
+    if (i === 0) return { ch: '1', a: .62 };
+    return givenOrDot(i);
+  });
+  tight(TH3, 44, 1686, 1.05, .3);
+}
+
+const CHARSET = [TH1, TH2, TH3, CMD, Q1, A1, Q2, BRAND, LBL_T, LBL_B, CODECMD, NOTE, STATUS_L, STATUS_M, STATUS_R, SEP, '0123456789.|-> ,', '|/-\\', '계산 중', ' LOG ', `-- ${CODE.length} lines --`, ...CODE, ...LINES.map(L => L.text)].join('');
 await initTerm(CHARSET);
 window.DUR = T.dur; window.EV = EV;
-window.render = t => { film(t); crt.render(scene, Math.round(t * 30), {}); };
+const THUMB = new URLSearchParams(location.search).get('frame') === 'thumb';
+window.render = t => { if (THUMB) thumb(); else film(t); crt.render(scene, Math.round(t * 30), {}); };
 window.READY = true;
